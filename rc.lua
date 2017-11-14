@@ -260,6 +260,12 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86MonBrightnessUp", function ()
         awful.util.spawn_with_shell("xrandr --output eDP-1 --brightness $(xrandr --verbose | awk '/Brightness/ {print $2+0.1}')") 
     end),
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+        awful.util.spawn_with_shell("amixer -D pulse sset Master 5%+") 
+    end),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+        awful.util.spawn_with_shell("amixer -D pulse sset Master 5%-") 
+    end),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "h",   awful.tag.viewprev,
